@@ -1,0 +1,18 @@
+<!-- Navbar -->
+<header xmlns:th="http:\\www.thymeleaf.org" th:fragment="frag-entete(titre)">
+	<h1 th:text="${titre}">Démonstrations Spring Web</h1>
+	<nav>
+		<ul>
+			<li><a href="/">Accueil</a></li>
+			<li><a href="/films">Liste des films</a></li>
+			<li sec:authorize="hasRole('ADMIN')"><a href="/films/creer">Création d'un film</a></li>
+			<li sec:authorize="!isAuthenticated()"><a href="/login">se connecter</a></li>
+			<li sec:authorize="isAuthenticated()"><a href="/logout">se déconnecter</a></li>
+		</ul>
+		<h2 sec:authorize="isAuthenticated()" >
+            <span sec:authentication="name"></span>
+            <span sec:authorize="isAuthenticated()"><a href="/logout">se déconnecter</a></span>
+        </h2>
+        
+	</nav>
+</header>

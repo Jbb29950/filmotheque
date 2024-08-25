@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+table{
+	border-collapse: collapse;
+}
+
+table td, table th{
+	padding: 8px;
+}
+
+table th{
+	background-color: black;
+	color: white;
+}
+h2 {
+	justify-content: center;
+	
+	padding-top:7px;
+	margin-left:5px;
+	
+}
+nav{
+	display:flex;
+	justify-content:space-between;
+}
+h2, span{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top:0;
+}

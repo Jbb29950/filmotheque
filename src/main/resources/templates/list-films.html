@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Filmotheque</title>
+
+<link rel="stylesheet" th:href="@{/css/tp-table.css}" />
+
+</head>
+
+<div th:replace="~{fragments/fragment-entete :: frag-entete('Films')}"></div>
+
+<body>
+	
+	<h1>Liste des films</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>titre</th>
+				<th>genre</th>
+				<th>action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="f : ${films}">
+				<td th:text="${f.id}"></td>
+				<td th:text="${f.titre}"></td>
+				<td th:text="${f.genre.titre}"></td>
+				<td><a th:href="@{/film(id=${f.id})}">détail</a></td>
+				 <td><a th:href="@{/supprimer(id=${f.id})}">supprimer</a></td>
+			</tr>
+			
+			
+		</tbody>
+		
+	</table>
+	
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/tp-table.css}" />
+<meta charset="UTF-8">
+<title>Accueil</title>
+</head>
+
+<div th:replace="~{fragments/fragment-entete :: frag-entete('Accueil')}"></div>
+
+<body>
+	
+	<div style="display:flex" >
+        <h1>Bienvenue sur la filmotheque de l'ENI  </h1>
+        
+    </div>
+	<!-- <h2 sec:authorize="isAuthenticated()">
+		<ul>
+		<li sec:authentication="name"></li>
+		 <li sec:authentication="principal.authorities"></li>
+		</ul>
+
+ </h2>-->
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/tp-table.css}" />
+<meta charset="UTF-8">
+<title>Filmotheque</title>
+
+<link rel="stylesheet" th:href="@{/css/tp-error.css}" />
+
+</head>
+
+<div th:replace="~{fragments/fragment-entete :: frag-entete('Création d\'un film en cours de construction')}"></div>
+
+<hr />
+
+<body>
+	
+	
+	<form th:action="@{/films/creer}" method="post" th:object="${film}">
+		<!-- block d'affichage des erreurs-->
+		<ul th:if="${#fields.hasErrors('*')}" class="error">
+			<li>Veuillez vérifier vos champs</li>
+			<ul>
+				<li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+			</ul>
+		</ul>
+		<ul>
+			<li>
+				<label for="selectGenre">Genre</label>
+				<select name="idGenre" id="selectGenre" th:field="*{genre}">
+					<option th:each="g : ${genresSession}" th:text="${g.titre}" th:value="${g.id}"></option>
+				</select>
+				<div th:replace="~{fragments/fragment-error :: frag-error(genre)}"></div>
+			</li>
+			
+			
+			<li>
+				<label for="idAnnee">Année</label>
+				<input type="number" id="idAnnee" th:field="*{annee}" min="1900"/>
+				<div th:replace="~{fragments/fragment-error :: frag-error(annee)}"></div>
+			</li>
+			<li>
+				<label for="idTitre">Titre</label>
+				<input type="text" id="idTitre" th:field="*{titre}" required/>
+				<div th:replace="~{fragments/fragment-error :: frag-error(titre)}"></div>
+			</li>
+			
+			<li>
+				<label for="selectRealisateur">Realisateur</label>
+				<select name="idRealisateur" id="selectRealisateur" th:field="*{realisateur}">
+					<option th:each="p : ${participants}" th:text="${p.nom + ' ' + p.prenom}" th:value="${p.id}"></option>
+				</select>
+				<div th:replace="~{fragments/fragment-error :: frag-error(realisateur)}"></div>
+			</li>
+			
+			<li>
+				<label for="idDuree">Duree</label>
+				<input type="number" id="idDuree" th:field="*{duree}" min="1" />
+				<div th:replace="~{fragments/fragment-error :: frag-error(duree)}"></div>
+			</li>
+			<li>
+				<label for="idSynopsis">Synopsis</label>
+				<textarea id="idSynopsis" th:field="*{synopsis}" />
+				<div th:replace="~{fragments/fragment-error :: frag-error(synopsis)}"></div>
+			</li>
+		</ul>
+		
+		
+		
+		
+		
+	
+		
+		<button type="submit">Enregistrer</button>
+		
+	</form>
+
+</body>
+</html>
